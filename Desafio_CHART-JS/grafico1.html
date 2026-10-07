@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafico - 1</title>
+    <!-- colocado para add o chart.js no html  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- canvas: meio que uma tela de pintura -->
+        <canvas id="grafico_temperatura" class="graficos"></canvas>
+        <canvas id="grafico_barra" class="graficos"></canvas>
+    </div>
+</body>
+
+</html>
+<script>
+
+    // vetor que add as metricas do eixo X
+    // grafico 1
+    const labels = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00'
+    ];
+
+    // grafico 2
+    const labels2 = [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho'
+    ];
+    // vetores, receber as metricas do eixo X e colocar titulo, além estilizar a cor do grafico e quais dados serão mostrados
+    // grafico 1
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Temperatura',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [30, 29, 28, 25, 22, 23],
+        },
+        {
+            label: 'Umidade',
+            backgroundColor: 'rgb(0, 140, 255)',
+            borderColor: 'rgb(0, 140, 255)',
+            data: [80, 82, 80, 85, 80, 83],
+        }]
+    };
+
+    // criacao de outro const data para criacão dos valores
+    // grafico 2
+    const data2 = {
+        labels: labels2,
+        datasets: [{
+            label: 'Temperatura',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [22, 24, 27, 23, 20, 18],
+        },
+        {
+            label: 'Umidade',
+            backgroundColor: 'rgb(0, 140, 255)',
+            borderColor: 'rgb(0, 140, 255)',
+            data: [90, 88, 93, 87, 88, 82],
+        }]
+    };
+
+    // mudança do tipo e recebimento dos dados
+    // grafico 1
+    const config_line = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+
+    // grafico 2, mudanca por que dados e tipo são diferentes
+    // grafico 2
+    const config_bar = {
+        type: 'bar',
+        data: data2,
+        options: {}
+    };
+</script>
+
+<script>
+
+    // mostrar grafico de temperatura em linha
+    // grafico 1
+    const grafico_temperatura = new Chart(
+        document.getElementById('grafico_temperatura'),
+        config_line
+    );
+
+    // mostra o grafico de temperatura em barra
+    // grafico 2
+    const grafico_barra = new Chart(
+        document.getElementById('grafico_barra'),
+        config_bar
+    );
+</script>
+<style>
+    .container {
+        position: relative;
+        margin: 3vw;
+        height: 40vw;
+        width: 40vw;
+        display: flex;
+        flex-direction: row;
+        gap: 5vw;
+    }
+
+    .graficos {
+        height: 10px;
+        width: 10px;
+    }
+</style>

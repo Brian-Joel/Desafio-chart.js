@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafico - 1</title>
+    <!-- colocado para add o chart.js no html  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body style="display: flex;">
+    <div>
+        <!-- canvas: meio que uma tela de pintura -->
+        <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw"></canvas>
+        <canvas id="myChart2" style="position: relative; height: 40vh; width: 40vw"></canvas>
+    </div>
+</body>
+
+</html>
+<script>
+
+    // vetor de labels, uma lista para add os valores no eixo X
+    // const: variavel que jamais muda
+    const labels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+    ];
+
+    // vetor, a linha do nosso grafico
+    // o que estou dizendo? label: my first dataset é linha vermelha,
+    // enquanto o outro, my firts dataset 2 é a linha azul
+    // aqui também se coloca os dados no "data"
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+        },
+        {
+            label: 'My First dataset 2',
+            backgroundColor: 'rgb(0, 0, 255)',
+            borderColor: 'rgb(0, 0, 255)',
+            data: [10 + 0, 10 + 10, 10 + 5, 10 + 2, 10 + 20, 10 + 30, 10 + 45],
+        }]
+    };
+
+
+    // muda o tipo do grafico, line = linha / bar = barras
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+
+    const config2 = {
+        type: 'bar',
+        data: data,
+        options: {}
+    };
+</script>
+
+<!-- cria uma grafico no id mychart, referenciando o nosso canvas -->
+<script>
+    
+    // 1 - declara a constante / 2- pega o id do canvas para exbir o grafico / 3- usa uma determinada configuração, neste caso o cofig declarado nos const acima
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+</script>
